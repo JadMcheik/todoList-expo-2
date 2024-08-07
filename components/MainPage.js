@@ -11,8 +11,9 @@ const MainPage = () => {
   const [inputValue, setInputValue] = useState("");
   const [id, setId] = useState(1);
   const inputField = React.createRef("");
-  const [editFlag, set_editFlag] = useState(false);
-  const [editId, set_editId] = useState(0);
+  const [emptyInputAlertShow, setEmptyInputAlertShow] = useState(false);
+  const [editFlag, setEditFlag] = useState(false);
+  const [editId, setEditId] = useState(0);
 
   const storeTasks = async (tasksToStore) => {
     try {
@@ -87,8 +88,8 @@ const MainPage = () => {
           storeTasks([...tasks, singleTask]);
         }
 
-        set_editId(0);
-        set_editFlag(false);
+        setEditId(0);
+        setEditFlag(false);
       } else {
         const singleTask = { value: inputValue.trim(), id: id };
         setTasks([...tasks, singleTask]);
@@ -100,10 +101,7 @@ const MainPage = () => {
 
       inputField.current.value = "";
       setInputValue("");
-    } else {
-      inputField.current.focus();
-
-      Alert.alert("Attention!", "you must enter a task first");
+      setEmptyInputAlertShow(false);
     }
   };
 
@@ -128,10 +126,10 @@ const MainPage = () => {
     const elem = tasks.find((task) => task.id === x);
 
     setInputValue(elem.value);
-    set_editId(x);
-    set_editFlag(true);
+    setEditId(x);
+    setEditFlag(true);
   }
-
+  function inputIsEmpty() {}
   //   <AddNewGoalButton setModalShow={setModalShow} ModalShow={ModalShow} />
 
   return (
@@ -145,6 +143,8 @@ const MainPage = () => {
         setInputValue={setInputValue}
         ref={inputField}
         inputValue={inputValue}
+        emptyInputAlertShow={emptyInputAlertShow}
+        setEmptyInputAlertShow={setEmptyInputAlertShow}
       />
       <Tasks
         data={tasks}

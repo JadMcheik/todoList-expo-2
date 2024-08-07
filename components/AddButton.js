@@ -6,10 +6,18 @@ const AddButton = (props) => {
     <View style={styles.addButtonView}>
       <TouchableOpacity
         style={styles.addButton}
-        onPress={() => {
-          props.setModalVisible(false);
-          props.addElement();
-        }}
+        onPress={
+          props.inputValue.trim()
+            ? () => {
+                {
+                  props.setModalVisible(false);
+                  props.addElement();
+                }
+              }
+            : () => {
+                props.setEmptyInputAlertShow(true);
+              }
+        }
       >
         <Text style={styles.addButtonText}>ADD GOAL</Text>
       </TouchableOpacity>

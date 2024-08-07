@@ -12,6 +12,8 @@ const AddOrCancel = (props) => {
       <AddButton
         setModalVisible={props.setModalVisible}
         addElement={props.addElement}
+        inputValue={props.inputValue}
+        setEmptyInputAlertShow={props.setEmptyInputAlertShow}
       />
     </View>
   );

@@ -13,6 +13,7 @@ import goalIamge from "../images/icons8-goal-100.png";
 import { Colors } from "../themes/Colors";
 import AddOrCancel from "./AddOrCancel";
 import React, { forwardRef } from "react";
+import TaskInput from "./TaskInput";
 const AddGoalModal = React.forwardRef((props, ref) => {
   return (
     <Modal visible={props.ModalVisible} animationType="slide">
@@ -23,18 +24,18 @@ const AddGoalModal = React.forwardRef((props, ref) => {
         <View style={styles.Innercontainer}>
           <Image source={goalIamge} style={styles.goalIamge} />
 
-          <TextInput
-            placeholder="Your course Goal!"
-            style={styles.goalInput}
-            onChangeText={props.setInputValue}
+          <TaskInput
             ref={ref}
-            value={props.inputValue}
+            setInputValue={props.setInputValue}
+            inputValue={props.inputValue}
+            emptyInputAlertShow={props.emptyInputAlertShow}
           />
-
           <AddOrCancel
             setModalVisible={props.setModalVisible}
             addElement={props.addElement}
             setInputValue={props.setInputValue}
+            inputValue={props.inputValue}
+            setEmptyInputAlertShow={props.setEmptyInputAlertShow}
           />
         </View>
       </KeyboardAvoidingView>
@@ -59,6 +60,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     rowGap: 30,
   },
+
+  emptyTextFieldAlert: {},
   goalInput: {
     width: "100%",
     height: 60,
