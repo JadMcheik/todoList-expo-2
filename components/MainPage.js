@@ -2,7 +2,7 @@ import AddNewGoalButton from "./AddNewGoalButton";
 import { Modal, View, Text, StyleSheet, Alert } from "react-native";
 import AddGoalModal from "./AddGoalModal";
 import Tasks from "./Tasks";
-import React, { forwardRef, useRef, useEffect, useState } from "react";
+import React, { forwardRef, useRef, useEffect, useState ,useReducer} from "react";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 const MainPage = () => {
@@ -14,6 +14,7 @@ const MainPage = () => {
   const [emptyInputAlertShow, setEmptyInputAlertShow] = useState(false);
   const [editFlag, setEditFlag] = useState(false);
   const [editId, setEditId] = useState(0);
+  const [, forceUpdate] = useReducer(x => x + 1, 0);
 
   const storeTasks = async (tasksToStore) => {
     try {
@@ -82,7 +83,7 @@ const MainPage = () => {
           storeTasks(updated_tasks);
         } else {
           //if the user deleted the task while being edited ,we will add a new one containing the new value (we can instead: do nothing)
-          const singleTask = { value: inputValue.trim(), id: id };
+          const singleTask = { value: inputValue.trim(), id: id, done: false };
           setTasks([...tasks, singleTask]);
           setId(id + 1);
           storeTasks([...tasks, singleTask]);
@@ -91,7 +92,7 @@ const MainPage = () => {
         setEditId(0);
         setEditFlag(false);
       } else {
-        const singleTask = { value: inputValue.trim(), id: id };
+        const singleTask = { value: inputValue.trim(), id: id, done: false };
         setTasks([...tasks, singleTask]);
         setId(id + 1);
         storeTasks([...tasks, singleTask]);
@@ -129,8 +130,11 @@ const MainPage = () => {
     setEditId(x);
     setEditFlag(true);
   }
-  function inputIsEmpty() {}
-  //   <AddNewGoalButton setModalShow={setModalShow} ModalShow={ModalShow} />
+  function changeTaskDone(IdOftaskToChange) {
+    const taskToChange = tasks.find((task) => task.id === IdOftaskToChange);
+    taskToChange.done = !taskToChange.done;
+    storeTasks(tasks);
+  }
 
   return (
     <View style={styles.mainPage}>
@@ -151,6 +155,8 @@ const MainPage = () => {
         deleteTask={deleteTask}
         editTask={editTask}
         setModalVisible={setModalVisible}
+        changeTaskDone={changeTaskDone}
+forceUpdate={forceUpdate}
       />
     </View>
   );

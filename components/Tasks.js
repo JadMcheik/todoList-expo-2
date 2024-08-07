@@ -7,9 +7,9 @@ const Tasks = (props) => {
   return (
     <View style={styles.tasksView}>
       {props.data.map((task) => (
-        <View style={styles.task} key={task.id}>
-          <View style={styles.taskTextView}>
-            <Text style={styles.taskText}>{task.value}</Text>
+        <TouchableOpacity style={ [styles.task , task.done?  styles.taskDone :  styles.taskNotDone ] } onPress={()=>{props.changeTaskDone(task.id) ; props.forceUpdate() }} key={task.id} >
+          <View style={styles.taskTextView} >
+            <Text style={ [ styles.taskText, task.done? styles.taskTextDone :null] }>{task.value} </Text>
           </View>
           <View style={styles.editTaskView}>
             <TouchableOpacity
@@ -30,7 +30,7 @@ const Tasks = (props) => {
               <Image style={styles.deleteTaskImg} source={deleteIcon} />
             </TouchableOpacity>
           </View>
-        </View>
+        </TouchableOpacity>
       ))}
     </View>
   );
@@ -49,14 +49,23 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     marginHorizontal: 10,
     minHeight: 40,
-
     backgroundColor: Colors.task,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between ",
-    paddingRight: 10,
+    paddingRight: 5,
     paddingLeft: 10,
     borderRadius: 5,
+  },
+  taskDone:{
+
+backgroundColor: Colors.taskDone,
+  },
+  taskNotDone:{
+
+backgroundColor: Colors.task,
+
+
   },
 
   taskTextView: {
@@ -67,6 +76,12 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 20,
     textAlign: "center",
+  
+  
+  },
+  taskTextDone: {
+    textDecorationLine: 'line-through',
+    textDecorationColor: "red",
   },
 
   deleteTaskView: {
@@ -79,7 +94,7 @@ const styles = StyleSheet.create({
   deleteTask: {
     width: "100%",
     height: "100%",
-    backgroundColor: Colors.task,
+
     alignItems: "center",
     justifyContent: "center",
     cursor: "pointer",
@@ -96,7 +111,7 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     marginLeft: "auto",
-    marginRight: 10,
+    marginRight: 2,
   },
 
   editTask: {
@@ -104,7 +119,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: "100%",
     height: "100%",
-    backgroundColor: Colors.task,
+ 
     cursor: "pointer",
   },
 

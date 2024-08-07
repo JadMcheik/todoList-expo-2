@@ -8,6 +8,7 @@ const AddOrCancel = (props) => {
       <CancelButton
         setModalVisible={props.setModalVisible}
         setInputValue={props.setInputValue}
+        setEmptyInputAlertShow={props.setEmptyInputAlertShow}
       />
       <AddButton
         setModalVisible={props.setModalVisible}

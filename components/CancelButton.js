@@ -9,6 +9,7 @@ const CancelButton = (props) => {
         onPress={() => {
           props.setInputValue("");
           props.setModalVisible(false);
+          props.setEmptyInputAlertShow(false);
         }}
       >
         <Text style={styles.cancelButtonText}>CANCEL</Text>
