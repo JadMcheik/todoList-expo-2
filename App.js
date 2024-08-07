@@ -1,11 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import AddNewGoalButton from "./components/AddNewGoalButton";
+import MainPage from "./components/MainPage";
+import AddGoalModal from "./components/AddGoalModal";
+import { Colors } from "./themes/Colors";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <MainPage/>
+
+      <StatusBar style="light" />
     </View>
   );
 }
@@ -13,8 +18,9 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor:Colors.primary,
+    alignItems: "center",
+    paddingVertical: 50,
+    paddingHorizontal: 20,
   },
 });
