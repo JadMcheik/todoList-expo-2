@@ -5,7 +5,9 @@ import {
   View,
   Image,
   TextInput,
-  TouchableOpacity,KeyboardAvoidingView,Platform,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+  Platform,
 } from "react-native";
 import goalIamge from "../images/icons8-goal-100.png";
 import { Colors } from "../themes/Colors";
@@ -15,7 +17,9 @@ const AddGoalModal = React.forwardRef((props, ref) => {
   return (
     <Modal visible={props.ModalVisible} animationType="slide">
       <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.container}>
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={styles.container}
+      >
         <View style={styles.Innercontainer}>
           <Image source={goalIamge} style={styles.goalIamge} />
 

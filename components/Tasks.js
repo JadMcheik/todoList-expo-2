@@ -3,7 +3,6 @@ import editIcon from "../images/editTask.png";
 import { View, StyleSheet, TouchableOpacity, Text, Image } from "react-native";
 import { Colors } from "../themes/Colors";
 
-
 const Tasks = (props) => {
   return (
     <View style={styles.tasksView}>
@@ -15,8 +14,10 @@ const Tasks = (props) => {
           <View style={styles.editTaskView}>
             <TouchableOpacity
               style={styles.editTask}
-              onPress={() => { props.editTask(task.id);props.setModalVisible(true)}}
-              
+              onPress={() => {
+                props.editTask(task.id);
+                props.setModalVisible(true);
+              }}
             >
               <Image style={styles.editTaskImg} source={editIcon} />
             </TouchableOpacity>
@@ -45,18 +46,17 @@ const styles = StyleSheet.create({
   },
 
   task: {
-   marginVertical:5,
-   marginHorizontal:10,
+    marginVertical: 5,
+    marginHorizontal: 10,
     minHeight: 40,
 
-    backgroundColor:Colors.task,
+    backgroundColor: Colors.task,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between ",
     paddingRight: 10,
     paddingLeft: 10,
-    borderRadius:5,
-    
+    borderRadius: 5,
   },
 
   taskTextView: {
@@ -64,9 +64,9 @@ const styles = StyleSheet.create({
   },
 
   taskText: {
-    color:'white',
+    color: "white",
     fontSize: 20,
-    textAlign:'center',
+    textAlign: "center",
   },
 
   deleteTaskView: {
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
   deleteTask: {
     width: "100%",
     height: "100%",
-    backgroundColor:Colors.task ,
+    backgroundColor: Colors.task,
     alignItems: "center",
     justifyContent: "center",
     cursor: "pointer",
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: "100%",
     height: "100%",
-    backgroundColor:Colors.task,
+    backgroundColor: Colors.task,
     cursor: "pointer",
   },
 

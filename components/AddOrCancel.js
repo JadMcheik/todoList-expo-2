@@ -1,37 +1,30 @@
-import { StyleSheet , View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import AddButton from "./AddButton";
 import CancelButton from "./CancelButton";
 
 const AddOrCancel = (props) => {
-    return ( 
+  return (
+    <View style={styles.AddOrCancel}>
+      <CancelButton
+        setModalVisible={props.setModalVisible}
+        setInputValue={props.setInputValue}
+      />
+      <AddButton
+        setModalVisible={props.setModalVisible}
+        addElement={props.addElement}
+      />
+    </View>
+  );
+};
 
-<View style={styles.AddOrCancel}>
-
-<CancelButton setModalVisible={props.setModalVisible}  setInputValue={props.setInputValue}/>
-<AddButton setModalVisible={props.setModalVisible} addElement={props.addElement}/>
-
-
-
-</View>
-
-
-     );
-}
- 
 export default AddOrCancel;
 
-
-const styles=StyleSheet.create({
-
-
-    AddOrCancel:{
-flexDirection:'row',
-alignItems:'center',
-justifyContent:'center',
-width:'100%',
-columnGap:20,
-    },
-
-
-
+const styles = StyleSheet.create({
+  AddOrCancel: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
+    columnGap: 20,
+  },
 });

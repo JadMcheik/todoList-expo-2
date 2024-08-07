@@ -1,13 +1,11 @@
-
 import AddNewGoalButton from "./AddNewGoalButton";
-import { Modal, View, Text, StyleSheet , Alert} from "react-native";
+import { Modal, View, Text, StyleSheet, Alert } from "react-native";
 import AddGoalModal from "./AddGoalModal";
 import Tasks from "./Tasks";
-import React, { forwardRef , useRef, useEffect, useState} from "react";
+import React, { forwardRef, useRef, useEffect, useState } from "react";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 const MainPage = () => {
-
   const [ModalVisible, setModalVisible] = useState(false);
   const [tasks, setTasks] = useState([]);
   const [inputValue, setInputValue] = useState("");
@@ -128,40 +126,32 @@ const MainPage = () => {
 
   function editTask(x) {
     const elem = tasks.find((task) => task.id === x);
-    
-   
 
     setInputValue(elem.value);
     set_editId(x);
     set_editFlag(true);
   }
 
-//   <AddNewGoalButton setModalShow={setModalShow} ModalShow={ModalShow} />
-
-
-
-
-
-
-       
-        
-       
-
-
-
-
-
-
+  //   <AddNewGoalButton setModalShow={setModalShow} ModalShow={ModalShow} />
 
   return (
     <View style={styles.mainPage}>
-<AddNewGoalButton setModalVisible={setModalVisible}/>
+      <AddNewGoalButton setModalVisible={setModalVisible} />
 
-<AddGoalModal ModalVisible={ModalVisible} setModalVisible={setModalVisible} addElement={addElement}  setInputValue={setInputValue} ref={inputField}  inputValue={inputValue}  />
-<Tasks data={tasks} deleteTask={deleteTask} editTask={editTask} setModalVisible={setModalVisible} />
-
-
-
+      <AddGoalModal
+        ModalVisible={ModalVisible}
+        setModalVisible={setModalVisible}
+        addElement={addElement}
+        setInputValue={setInputValue}
+        ref={inputField}
+        inputValue={inputValue}
+      />
+      <Tasks
+        data={tasks}
+        deleteTask={deleteTask}
+        editTask={editTask}
+        setModalVisible={setModalVisible}
+      />
     </View>
   );
 };
@@ -171,7 +161,7 @@ export default MainPage;
 const styles = StyleSheet.create({
   mainPage: {
     width: "100%",
-    alignItems:'center',
-    justifyContent:'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
