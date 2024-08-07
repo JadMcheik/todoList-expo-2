@@ -7,9 +7,23 @@ const Tasks = (props) => {
   return (
     <View style={styles.tasksView}>
       {props.data.map((task) => (
-        <TouchableOpacity style={ [styles.task , task.done?  styles.taskDone :  styles.taskNotDone ] } onPress={()=>{props.changeTaskDone(task.id) ; props.forceUpdate() }} key={task.id} >
-          <View style={styles.taskTextView} >
-            <Text style={ [ styles.taskText, task.done? styles.taskTextDone :null] }>{task.value} </Text>
+        <TouchableOpacity
+          style={[
+            styles.task,
+            task.done ? styles.taskDone : styles.taskNotDone,
+          ]}
+          onPress={() => {
+            props.changeTaskDone(task.id);
+            props.forceUpdate();
+          }}
+          key={task.id}
+        >
+          <View style={styles.taskTextView}>
+            <Text
+              style={[styles.taskText, task.done ? styles.taskTextDone : null]}
+            >
+              {task.value}{" "}
+            </Text>
           </View>
           <View style={styles.editTaskView}>
             <TouchableOpacity
@@ -57,15 +71,11 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     borderRadius: 5,
   },
-  taskDone:{
-
-backgroundColor: Colors.taskDone,
+  taskDone: {
+    backgroundColor: Colors.taskDone,
   },
-  taskNotDone:{
-
-backgroundColor: Colors.task,
-
-
+  taskNotDone: {
+    backgroundColor: Colors.task,
   },
 
   taskTextView: {
@@ -76,11 +86,9 @@ backgroundColor: Colors.task,
     color: "white",
     fontSize: 20,
     textAlign: "center",
-  
-  
   },
   taskTextDone: {
-    textDecorationLine: 'line-through',
+    textDecorationLine: "line-through",
     textDecorationColor: "red",
   },
 
@@ -119,7 +127,7 @@ backgroundColor: Colors.task,
     justifyContent: "center",
     width: "100%",
     height: "100%",
- 
+
     cursor: "pointer",
   },
 

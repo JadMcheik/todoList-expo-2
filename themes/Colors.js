@@ -4,5 +4,5 @@ export const Colors = {
   inputColor: "#e4d0ff",
   cancelColor: "#f31282",
   task: "#5e0acc",
-  taskDone:'green',
+  taskDone: "green",
 };

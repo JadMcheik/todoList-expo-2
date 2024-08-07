@@ -2,7 +2,13 @@ import AddNewGoalButton from "./AddNewGoalButton";
 import { Modal, View, Text, StyleSheet, Alert } from "react-native";
 import AddGoalModal from "./AddGoalModal";
 import Tasks from "./Tasks";
-import React, { forwardRef, useRef, useEffect, useState ,useReducer} from "react";
+import React, {
+  forwardRef,
+  useRef,
+  useEffect,
+  useState,
+  useReducer,
+} from "react";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 const MainPage = () => {
@@ -14,7 +20,7 @@ const MainPage = () => {
   const [emptyInputAlertShow, setEmptyInputAlertShow] = useState(false);
   const [editFlag, setEditFlag] = useState(false);
   const [editId, setEditId] = useState(0);
-  const [, forceUpdate] = useReducer(x => x + 1, 0);
+  const [, forceUpdate] = useReducer((x) => x + 1, 0);
 
   const storeTasks = async (tasksToStore) => {
     try {
@@ -156,7 +162,7 @@ const MainPage = () => {
         editTask={editTask}
         setModalVisible={setModalVisible}
         changeTaskDone={changeTaskDone}
-forceUpdate={forceUpdate}
+        forceUpdate={forceUpdate}
       />
     </View>
   );
