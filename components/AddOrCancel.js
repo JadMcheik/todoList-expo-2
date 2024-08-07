@@ -7,8 +7,8 @@ const AddOrCancel = (props) => {
 
 <View style={styles.AddOrCancel}>
 
-<CancelButton setModalVisible={props.setModalVisible}/>
-<AddButton setModalVisible={props.setModalVisible}/>
+<CancelButton setModalVisible={props.setModalVisible}  setInputValue={props.setInputValue}/>
+<AddButton setModalVisible={props.setModalVisible} addElement={props.addElement}/>
 
 
 

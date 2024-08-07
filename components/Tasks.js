@@ -1,5 +1,5 @@
 import deleteIcon from "../images/trash-svgrepo-com.png";
-
+import editIcon from "../images/editTask.png";
 import { View, StyleSheet, TouchableOpacity, Text, Image } from "react-native";
 import { Colors } from "../themes/Colors";
 
@@ -10,9 +10,17 @@ const Tasks = (props) => {
       {props.data.map((task) => (
         <View style={styles.task} key={task.id}>
           <View style={styles.taskTextView}>
-            <Text style={styles.taskText}>{task.value}hello world</Text>
+            <Text style={styles.taskText}>{task.value}</Text>
           </View>
-          
+          <View style={styles.editTaskView}>
+            <TouchableOpacity
+              style={styles.editTask}
+              onPress={() => { props.editTask(task.id);props.setModalVisible(true)}}
+              
+            >
+              <Image style={styles.editTaskImg} source={editIcon} />
+            </TouchableOpacity>
+          </View>
           <View style={styles.deleteTaskView}>
             <TouchableOpacity
               style={styles.deleteTask}
@@ -32,21 +40,23 @@ export default Tasks;
 const styles = StyleSheet.create({
   tasksView: {
     width: "100%",
-    marginTop: 30,
+    marginTop: 20,
     flexDirection: "column-reverse",
   },
 
   task: {
-    marginTop: 5,
-    marginBottom: 5,
+   marginVertical:5,
+   marginHorizontal:10,
     minHeight: 40,
 
-    backgroundColor:Colors.primary,
+    backgroundColor:Colors.task,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between ",
     paddingRight: 10,
     paddingLeft: 10,
+    borderRadius:5,
+    
   },
 
   taskTextView: {
@@ -54,8 +64,9 @@ const styles = StyleSheet.create({
   },
 
   taskText: {
-    color:Colors.white,
-    fontSize: 26,
+    color:'white',
+    fontSize: 20,
+    textAlign:'center',
   },
 
   deleteTaskView: {
@@ -68,7 +79,7 @@ const styles = StyleSheet.create({
   deleteTask: {
     width: "100%",
     height: "100%",
-    backgroundColor:Colors.primary,
+    backgroundColor:Colors.task ,
     alignItems: "center",
     justifyContent: "center",
     cursor: "pointer",
@@ -79,5 +90,27 @@ const styles = StyleSheet.create({
     height: 25,
   },
 
-  
+  editTaskView: {
+    alignItems: "center",
+    justifyContent: "center",
+    width: 30,
+    height: 30,
+    marginLeft: "auto",
+    marginRight: 10,
+  },
+
+  editTask: {
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
+    height: "100%",
+    backgroundColor:Colors.task,
+    cursor: "pointer",
+  },
+
+  editTaskImg: {
+    marginTop: "auto",
+    width: 27,
+    height: 27,
+  },
 });

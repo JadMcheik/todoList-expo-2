@@ -4,7 +4,7 @@ import { Colors } from "../themes/Colors";
 const AddButton = (props) => {
   return (
     <View style={styles.addButtonView}>
-      <TouchableOpacity style={styles.addButton} onPress={()=> props.setModalVisible(false)}>
+      <TouchableOpacity style={styles.addButton} onPress={()=> { props.setModalVisible(false);  props.addElement() }} >
         <Text style={styles.addButtonText}>ADD GOAL</Text>
       </TouchableOpacity>
     </View>

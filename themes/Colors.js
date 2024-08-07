@@ -3,4 +3,5 @@ export const Colors={
     buttonsColor:'#a065ec' ,
     inputColor:"#e4d0ff" ,
     cancelColor:'#f31282',
+    task:"#5e0acc",
 };

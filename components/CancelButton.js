@@ -5,7 +5,7 @@ import { StyleSheet,View , TouchableOpacity ,Text } from "react-native";
 const CancelButton = (props) => {
   return (
     <View style={styles.cancelButtonView}>
-      <TouchableOpacity style={styles.cancelButton} onPress={()=> props.setModalVisible(false)}>
+      <TouchableOpacity style={styles.cancelButton} onPress={()=>{props.setInputValue("") ;props.setModalVisible(false)}}>
         <Text style={styles.cancelButtonText}>CANCEL</Text>
       </TouchableOpacity>
     </View>
