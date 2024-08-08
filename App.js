@@ -8,12 +8,10 @@ import { Colors } from "./themes/Colors";
 export default function App() {
   return (
     <View style={styles.outerContainer}>
-    <ScrollView style={styles.innerContainer}>
-      <MainPage/>
-
-      
-    </ScrollView>
-    <StatusBar style="light" />
+      <ScrollView style={styles.innerContainer}>
+        <MainPage />
+      </ScrollView>
+      <StatusBar style="light" />
     </View>
   );
 }
@@ -21,15 +19,12 @@ export default function App() {
 const styles = StyleSheet.create({
   outerContainer: {
     flex: 1,
-    backgroundColor:Colors.primary,
+    backgroundColor: Colors.primary,
     alignItems: "center",
     paddingVertical: 50,
     paddingHorizontal: 20,
-
   },
-  innerContainer:{
-    width:'100%',
-
-
+  innerContainer: {
+    width: "100%",
   },
 });
